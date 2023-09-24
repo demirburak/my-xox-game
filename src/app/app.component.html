@@ -1,6 +1,6 @@
-<h1>XoX Oyunu</h1>
+<h1>XoX Game</h1>
 <h2 class="alert alert-warning text-center">{{message}} </h2>
-<button (click)="newGame()" class="btn btn-primary w-100">Yeni Oyunu Başlat</button>
+<button (click)="newGame()" class="btn btn-primary w-100">Start the new game</button>
 
 <div class="container">
   <div class="row">
@@ -17,5 +17,5 @@
 <button 
   *ngFor="let m of moves let mi = index"
   (click)="returnSelectedMove(mi)"
-  class="btn btn-primary">{{mi+1}}.Hamle
+  class="btn btn-primary">{{mi+1}}.Move
 </button>

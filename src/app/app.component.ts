@@ -24,7 +24,7 @@ export class AppComponent {
     }
     this.mark = "X";
     this.gameOver = false;
-    this.message = `Sıradaki : ${this.mark}`;
+    this.message = `Next : ${this.mark}`;
 
   }
 
@@ -37,9 +37,9 @@ export class AppComponent {
       this.games.forEach((e:any)=> backedUpGames.push(Object.assign({},e)));
       this.moves.push(backedUpGames);
 
-      this.message = "Sıradaki : " + this.mark;
-      this.isGameOver();
       this.mark = (this.mark == "X") ? "O" : "X";
+      this.message = "Next : " + this.mark;
+      this.isGameOver();
 
     }
   }
@@ -66,17 +66,18 @@ export class AppComponent {
         this.games[e[0]].winner =
           this.games[e[1]].winner =
           this.games[e[2]].winner = true;
+          this.mark = this.games[e[0]].mark;
       }
     });
 
     if (this.gameOver) {
-      this.message = "Oyun Bitti. Kazanan " + this.mark + ". :)";
+      this.message = "Game over. Winner is " + this.mark + ". :)";
     }
 
     const foundElements = this.games.filter((e) => e.mark == "");
     if (foundElements.length == 0 && !this.gameOver) {
       this.gameOver = true;
-      this.message = "Oyun Berabere Bitti.";
+      this.message = "The game ended in a draw.";
     }
   }
 
